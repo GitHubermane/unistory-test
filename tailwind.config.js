@@ -10,8 +10,13 @@ export default {
         BebasNeue: ['"Bebas Neue"', "sans-serif"],
         AvenirNextCyr: ['"Avenir Next Cyr"', "sans-serif"],
         Inter: ['Inter', "sans-serif"],
-
       },
+      colors: {
+        'orange': {
+          light: '#E75626',
+          dark: '#BE3B10',
+        }
+      }
     },
   },
   plugins: [],
