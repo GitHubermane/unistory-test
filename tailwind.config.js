@@ -15,6 +15,10 @@ export default {
         'orange': {
           light: '#E75626',
           dark: '#BE3B10',
+        },
+        'gray': {
+          light: '#C7C7C7',
+          dark: '#5A5A5A',
         }
       }
     },
