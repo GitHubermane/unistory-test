@@ -8,7 +8,7 @@ type PropsType = {
 
 export const Button: FC<PropsType> = ({ children, isDisabled, onClick }) => {
   const bgColor = isDisabled
-    ? 'bg-orange-light/50'
+    ? 'bg-orange-light/50 text-white/50'
     : 'bg-orange-light hover:bg-orange-dark';
   return (
     <button
