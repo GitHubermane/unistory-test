@@ -25,7 +25,12 @@ export const Input: FC<PropsType> = ({
   const inputStyle = isDisabled ? 'border-gray-dark' : '';
   return (
     <div className="flex flex-col">
-      <label htmlFor={id}>{label}</label>
+      <label
+        className="text-2xl mb-2"
+        htmlFor={id}
+      >
+        {label}
+      </label>
       <input
         className={`h-10 px-4 bg-transparent rounded-full font-AvenirNextCyr border outline-none transition-colors focus:border-orange-light ${inputStyle}`}
         type="text"
