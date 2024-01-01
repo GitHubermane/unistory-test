@@ -13,14 +13,17 @@ export default {
       },
       colors: {
         'orange': {
-          light: '#E75626',
-          dark: '#BE3B10',
+          light: "#E75626",
+          dark: "#BE3B10",
         },
         'gray': {
-          light: '#C7C7C7',
-          DEFAULT: '#D2C4C4',
-          dark: '#5A5A5A',
-        }
+          light: "#C7C7C7",
+          DEFAULT: "#D2C4C4",
+          dark: "#5A5A5A",
+        },
+        'black': {
+          DEFAULT: "#262628",
+        },
       }
     },
   },
