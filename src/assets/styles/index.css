@@ -10,8 +10,9 @@ body,
   height: 100%;
 }
 
-#root {
+html {
   font-family: "Bebas Neue";
   background-color: #171719;
   color: #fff;
+  overflow: hidden;
 }
