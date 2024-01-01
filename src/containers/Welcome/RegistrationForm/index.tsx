@@ -1,5 +1,6 @@
 import { Button, Input } from 'components';
 import { useState } from 'react';
+import { Table } from './Table';
 
 export const RegistrationForm = () => {
   const [name, setName] = useState('');
@@ -19,44 +20,49 @@ export const RegistrationForm = () => {
         commodo consequat.
       </p>
 
-      {isRegistred ? (
+      <div className="flex">
         <div>
-          <div className="flex flex-col font-bold mb-5">
-            <span className="mb-2 text-2xl">Name</span>
-            <span className="text-orange-light text-3xl">Rojer waters</span>
-          </div>
-          <div className="flex flex-col font-bold mb-7">
-            <span className="mb-2 text-2xl">Email</span>
-            <span className="text-orange-light text-3xl">
-              Charadeyouare@gmail.com
-            </span>
-          </div>
-          <Button
-            onClick={() => {}}
-            isDisabled
-          >
-            Get early access
-          </Button>
+          {isRegistred ? (
+            <div>
+              <div className="flex flex-col font-bold mb-5">
+                <span className="mb-2 text-2xl">Name</span>
+                <span className="text-orange-light text-3xl">Rojer waters</span>
+              </div>
+              <div className="flex flex-col font-bold mb-7">
+                <span className="mb-2 text-2xl">Email</span>
+                <span className="text-orange-light text-3xl">
+                  Charadeyouare@gmail.com
+                </span>
+              </div>
+              <Button
+                onClick={() => {}}
+                isDisabled
+              >
+                Get early access
+              </Button>
+            </div>
+          ) : (
+            <>
+              <div className="flex flex-col gap-4 mb-6">
+                <Input
+                  value={name}
+                  onChange={setName}
+                  placeholder="We will display your name in participation list"
+                  label="Name"
+                />
+                <Input
+                  value={email}
+                  onChange={setEmail}
+                  placeholder="We will display your email in participation list"
+                  label="Email"
+                />
+              </div>
+              <Button onClick={() => {}}>Get early access</Button>
+            </>
+          )}
         </div>
-      ) : (
-        <>
-          <div className="flex flex-col gap-4 mb-6">
-            <Input
-              value={name}
-              onChange={setName}
-              placeholder="We will display your name in participation list"
-              label="Name"
-            />
-            <Input
-              value={email}
-              onChange={setEmail}
-              placeholder="We will display your email in participation list"
-              label="Email"
-            />
-          </div>
-          <Button onClick={() => {}}>Get early access</Button>
-        </>
-      )}
+        <Table />
+      </div>
     </div>
   );
 };
