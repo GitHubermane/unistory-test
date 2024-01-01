@@ -16,3 +16,10 @@ html {
   color: #fff;
   overflow: hidden;
 }
+
+@layer components {
+  .outline-title {
+    color: transparent;
+    -webkit-text-stroke: 1px #fff;
+  }
+}
