@@ -1,3 +1,5 @@
+import { CrossIcon } from 'assets';
+
 const arr = [
   {
     name: 'Rojer Waters',
@@ -23,17 +25,34 @@ const arr = [
 
 export const Table = () => (
   <div className="flex flex-col">
-    <div className="flex text-left">
-      <div className="flex-1 w-1/5">Name</div>
-      <div className="flex-1 w-2/5">Email</div>
-      <div className="flex-1 w-2/5">Wallet</div>
+    <div className="text-left pb-4 text-2xl border-b">
+      <div className="inline-block w-1/5">Name</div>
+      <div className="inline-block w-2/5">Email</div>
+      <div className="inline-block w-2/5">Wallet</div>
     </div>
-    <div>
+    <div className="font-AvenirNextCyr">
       {arr.map(({ name, email, adress }) => (
-        <div className="flex text-left">
-          <div className="flex-1 w-1/5 pr-4">{name}</div>
-          <div className="flex-1 w-2/5 pr-4">{email}</div>
-          <div className="flex-1 w-2/5 pr-4">{adress}</div>
+        <div
+          className="flex items-center py-4 text-sm text-left border-b last-of-type:border-none"
+          key={email}
+        >
+          <div className="inline-block w-1/5 pr-4 overflow-hidden text-ellipsis">
+            {name}
+          </div>
+          <div className="inline-block w-2/5 pr-4 overflow-hidden text-ellipsis">
+            {email}
+          </div>
+          <div className="inline-flex justify-between items-center w-2/5">
+            <span className="w-auto overflow-hidden text-ellipsis pr-4">
+              {adress}
+            </span>
+            <button>
+              <img
+                src={CrossIcon}
+                alt="Cross"
+              />
+            </button>
+          </div>
         </div>
       ))}
     </div>
