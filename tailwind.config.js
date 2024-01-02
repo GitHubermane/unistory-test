@@ -23,6 +23,7 @@ export default {
         },
         'black': {
           DEFAULT: "#262628",
+          dark: "#171719"
         },
       }
     },

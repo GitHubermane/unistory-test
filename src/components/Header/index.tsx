@@ -5,7 +5,7 @@ export const Header = () => {
   const adress = '0x1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v';
 
   return (
-    <div className="flex justify-between items-center h-20 px-16">
+    <div className="flex justify-between items-center fixed top-0 w-full h-20 px-16 bg-black-dark z-20">
       <div className="flex items-center justify-center h-11 w-48 text-gray-light bg-gray-dark border border-dashed border-gray-light">
         LOGO
       </div>
