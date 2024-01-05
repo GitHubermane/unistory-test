@@ -1,0 +1,19 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+export const userApi = createApi({
+  reducerPath: 'usersApi',
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${process.env.REACT_APP_SERVER_URL}/api/`,
+  }),
+  endpoints: (builder) => ({
+    getUsers: builder.query({
+      query: ({ page, perPage = 20 }) => `data?page=${page}&perPage=${perPage}`,
+    }),
+    getUserbyId: builder.query({
+      query: (id) => `data/id/${id}`,
+    }),
+  }),
+});
+
+export const { useGetUsersQuery, useGetUserbyIdQuery, useLazyGetUsersQuery } =
+  userApi;
