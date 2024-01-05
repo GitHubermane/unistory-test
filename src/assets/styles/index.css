@@ -14,12 +14,28 @@ html {
   font-family: "Bebas Neue";
   background-color: #171719;
   color: #fff;
-  overflow: hidden;
 }
 
 @layer components {
   .outline-title {
     color: transparent;
     -webkit-text-stroke: 1px #fff;
+  }
+}
+
+@layer components {
+  .scroll::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: #e75626;
+    outline: 3px solid #e75626;
+    border-radius: 1.5px;
+  }
+
+  .scroll::-webkit-scrollbar-track {
+    background: #fff;
+    width: 1px;
   }
 }
