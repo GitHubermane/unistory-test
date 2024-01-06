@@ -1,8 +1,22 @@
+import { useEthers } from '@usedapp/core';
 import { Button } from 'components';
+import { useAppDispatch } from 'hooks/redux';
+import { useEffect } from 'react';
+import { setProfileState } from 'store/profile/slice';
 
 export const Header = () => {
-  const isConnected = false;
-  const adress = '0x1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v';
+  const dispatch = useAppDispatch();
+  const { account, activateBrowserWallet } = useEthers();
+
+  const onConnectWalletClick = () => {
+    activateBrowserWallet();
+  };
+
+  // Т.к. не был уверен откуда правильнее брать адресс кошелька
+  // решил сохранять его в store
+  useEffect(() => {
+    dispatch(setProfileState({ adress: account }));
+  }, [account]);
 
   return (
     <div className="flex justify-between items-center fixed top-0 w-full h-20 px-16 bg-black-dark z-20">
@@ -10,12 +24,12 @@ export const Header = () => {
         LOGO
       </div>
 
-      {isConnected ? (
+      {account ? (
         <div className="max-w-36 overflow-hidden text-ellipsis text-orange-light">
-          <span className="text-lg   whitespace-nowrap">{adress}</span>
+          <span className="text-lg whitespace-nowrap">{account}</span>
         </div>
       ) : (
-        <Button onClick={() => {}}>Connect metamask</Button>
+        <Button onClick={onConnectWalletClick}>Connect metamask</Button>
       )}
     </div>
   );
