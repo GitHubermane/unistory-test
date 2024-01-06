@@ -11,10 +11,9 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    setUsersState: (state, action: PayloadAction<Partial<UsersState>>) => {
+    setUsersState: (state, action: PayloadAction<Partial<UsersState>>) => 
       // eslint-disable-next-line no-param-reassign
-      state = { ...state, ...action };
-    },
+      ({ ...state, ...action }),    
     addUsers: (state, action: PayloadAction<User>) => {
       state.users.push(action.payload);
     },

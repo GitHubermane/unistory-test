@@ -13,10 +13,10 @@ export const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setProfileState: (state, action: PayloadAction<Partial<ProfileState>>) => {
+    setProfileState: (state, action: PayloadAction<Partial<ProfileState>>) => 
       // eslint-disable-next-line no-param-reassign
-      state = { ...state, ...action };
-    },
+      ({ ...state, ...action.payload })
+    ,
   },
 });
 
