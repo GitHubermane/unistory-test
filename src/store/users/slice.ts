@@ -11,10 +11,10 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    setUsersState: (state, action: PayloadAction<Partial<UsersState>>) => 
+    setUsersState: (state, action: PayloadAction<Partial<UsersState>>) =>
       // eslint-disable-next-line no-param-reassign
-      ({ ...state, ...action }),    
-    addUsers: (state, action: PayloadAction<User>) => {
+      ({ ...state, ...action.payload }),
+    addUser: (state, action: PayloadAction<User>) => {
       state.users.push(action.payload);
     },
     addYouself: (state, action: PayloadAction<User>) => {
@@ -27,7 +27,7 @@ export const usersSlice = createSlice({
 });
 
 export const {
-  addUsers, addYouself, deleteUser, setUsersState, 
+  addUser, addYouself, deleteUser, setUsersState, 
 } =
   usersSlice.actions;
 
