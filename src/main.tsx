@@ -1,15 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+// Redux
 import { store } from 'store';
 import { Provider } from 'react-redux';
-import App from './App.tsx';
 
+// Metamask
+import { config } from 'api';
+import { DAppProvider } from '@usedapp/core';
+
+// styles
 import './assets/styles/index.css';
+
+import App from './App.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <DAppProvider config={config}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </DAppProvider>
   </Provider>,
 );
