@@ -1,6 +1,6 @@
 import { PlanetImg } from 'assets';
 import { fromatNumber } from 'utils';
-import { RegistrationForm } from './RegistrationForm';
+import { Registration } from './Registration';
 
 export const Welcome = () => {
   const stats = [];
@@ -54,7 +54,7 @@ export const Welcome = () => {
         </div>
       </div>
       <div>
-        <RegistrationForm />
+        <Registration />
       </div>
     </div>
   );
