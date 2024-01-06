@@ -6,17 +6,16 @@ const initialState: Readonly<ProfileState> = {
   id: null,
   name: null,
   email: null,
-  adress: null,
+  address: null,
 };
 
 export const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setProfileState: (state, action: PayloadAction<Partial<ProfileState>>) => 
+    setProfileState: (state, action: PayloadAction<Partial<ProfileState>>) =>
       // eslint-disable-next-line no-param-reassign
-      ({ ...state, ...action.payload })
-    ,
+      ({ ...state, ...action.payload }),
   },
 });
 
