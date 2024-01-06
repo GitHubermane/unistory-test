@@ -15,7 +15,7 @@ export const Header = () => {
   // Т.к. не был уверен откуда правильнее брать адресс кошелька
   // решил сохранять его в store
   useEffect(() => {
-    dispatch(setProfileState({ adress: account }));
+    dispatch(setProfileState({ address: account }));
   }, [account]);
 
   return (
