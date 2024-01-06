@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { User, UserResponse } from 'types';
 
 export const userApi = createApi({
   reducerPath: 'usersApi',
@@ -6,10 +7,10 @@ export const userApi = createApi({
     baseUrl: `${process.env.REACT_APP_SERVER_URL}/api/`,
   }),
   endpoints: (builder) => ({
-    getUsers: builder.query({
+    getUsers: builder.query<UserResponse, { page: number; perPage?: number }>({
       query: ({ page, perPage = 20 }) => `data?page=${page}&perPage=${perPage}`,
     }),
-    getUserbyId: builder.query({
+    getUserbyId: builder.query<User, number>({
       query: (id) => `data/id/${id}`,
     }),
   }),
