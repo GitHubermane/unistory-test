@@ -15,16 +15,19 @@ import { ModalProvider } from 'react-modal-hook';
 // styles
 import './assets/styles/index.css';
 
+import { BrowserRouter } from 'react-router-dom';
 import App from './App.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <ModalProvider>
-    <Provider store={store}>
-      <DAppProvider config={config}>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </DAppProvider>
-    </Provider>
-  </ModalProvider>,
+  <React.StrictMode>
+    <ModalProvider>
+      <Provider store={store}>
+        <DAppProvider config={config}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </DAppProvider>
+      </Provider>
+    </ModalProvider>
+  </React.StrictMode>,
 );
