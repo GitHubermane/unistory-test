@@ -1,8 +1,16 @@
 import { CrossIcon } from 'assets';
-import { useAppSelector } from 'hooks/redux';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { deleteUser } from 'store/users/slice';
 
 export const Table = () => {
+  const dispatch = useAppDispatch();
+
+  const { id: myId } = useAppSelector((state) => state.profile);
   const { users } = useAppSelector((state) => state.users);
+
+  const onDeleteClick = () => {
+    dispatch(deleteUser());
+  };
 
   return (
     <div className="flex flex-col">
@@ -30,13 +38,15 @@ export const Table = () => {
                 <span className="w-auto overflow-hidden text-ellipsis pr-4">
                   {address}
                 </span>
-                <button>
+                {myId === id && (
+                <button onClick={onDeleteClick}>
                   <img
                     className="h-min"
                     src={CrossIcon}
                     alt="Cross"
                   />
                 </button>
+                )}
               </div>
             </div>
           ))}
