@@ -15,7 +15,7 @@ const arr = [
   },
 ];
 
-export const Info = () => (
+export const User = () => (
   <div className="overflow-hidden">
     <div className="relative z-10">
       <h2 className="mt-24 mb-12 text-5xl font-bold">Personal data</h2>

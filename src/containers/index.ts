@@ -1,2 +1,2 @@
 export { Welcome } from './Welcome';
-export { Info } from './Info';
+export { User } from './User';
