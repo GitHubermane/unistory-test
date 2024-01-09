@@ -1,5 +1,3 @@
 import { User } from 'containers';
 
-export const UserPage = () => {
-  return <User />;
-};
+export const UserPage = () => <User />;
