@@ -1,57 +1,82 @@
-import { CrossIcon } from 'assets';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { deleteUser } from 'store/users/slice';
+import { useEffect, useState } from 'react';
+import { useGetUsersQuery } from 'services/user';
+import { addUsers, setUsersState } from 'store/users/slice';
+import useInfiniteScroll from 'react-infinite-scroll-hook';
+import { Loader } from 'components';
+import { Row } from './Row';
 
 export const Table = () => {
   const dispatch = useAppDispatch();
 
-  const { id: myId } = useAppSelector((state) => state.profile);
   const { users } = useAppSelector((state) => state.users);
 
-  const onDeleteClick = () => {
-    dispatch(deleteUser());
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const { data, isError, isLoading } = useGetUsersQuery({
+    page: currentPage,
+  });
+
+  useEffect(() => {
+    if (data) dispatch(addUsers(data?.items));
+  }, [data]);
+
+  // При возвращении с другой страницы записи в таблице начинают повторяться
+  // поэтому при переходе на другую страницу очищаю таблицу
+  useEffect(() => () => {
+    dispatch(setUsersState({ users: [] }));
+  }, []);
+
+  // infinite scroll
+  let hasNextPage = true;
+  if (data?.meta) hasNextPage = data.meta.currentPage < data.meta.totalPages;
+
+  const onLoadMore = () => {
+    setCurrentPage((prev) => prev + 1);
   };
 
+  const [sentryRef, { rootRef }] = useInfiniteScroll({
+    loading: isLoading,
+    hasNextPage,
+    onLoadMore,
+    disabled: isError,
+    rootMargin: '0px 0px 0px 0px',
+  });
+
   return (
-    <div className="flex flex-col">
-      <div className="text-left pb-4 text-2xl border-b">
-        <div className="inline-block w-1/5">Name</div>
-        <div className="inline-block w-2/5">Email</div>
-        <div className="inline-block w-2/5">Wallet</div>
-      </div>
-      <div className="font-AvenirNextCyr overflow-y-auto h-96 -mr-7 scroll">
-        <div className="mr-7">
-          {users?.map(({
-            username, email, address, id, 
-          }) => (
-            <div
-              className="flex items-center py-4 text-sm text-left border-b last-of-type:border-none"
-              key={id}
-            >
-              <div className="inline-block w-1/5 pr-4 overflow-hidden text-ellipsis">
-                {username}
-              </div>
-              <div className="inline-block w-2/5 pr-4 overflow-hidden text-ellipsis">
-                {email}
-              </div>
-              <div className="inline-flex justify-between items-center w-2/5">
-                <span className="w-auto overflow-hidden text-ellipsis pr-4">
-                  {address}
-                </span>
-                {myId === id && (
-                <button onClick={onDeleteClick}>
-                  <img
-                    className="h-min"
-                    src={CrossIcon}
-                    alt="Cross"
-                  />
-                </button>
-                )}
+    <div>
+      {isError ? (
+        <div className="font-AvenirNextCyr text-3xl text-orange-light">
+          Fetching failed
+        </div>
+      ) : (
+        <div className="flex flex-col">
+          <div className="text-left pb-4 text-2xl border-b">
+            <div className="inline-block w-1/5">Name</div>
+            <div className="inline-block w-2/5">Email</div>
+            <div className="inline-block w-2/5">Wallet</div>
+          </div>
+          <div
+            className="font-AvenirNextCyr overflow-y-auto h-[200px] -mr-7 scroll"
+            ref={rootRef}
+          >
+            <div className="mr-7">
+              {users?.map((user) => (
+                <Row
+                  key={user.id}
+                  {...user}
+                />
+              ))}
+              <div
+                className="flex justify-center mt-4"
+                ref={sentryRef}
+              >
+                <Loader />
               </div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
