@@ -16,6 +16,7 @@ export const Header = () => {
   // решил сохранять его в store
   useEffect(() => {
     dispatch(setProfileState({ address: account }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
 
   return (
