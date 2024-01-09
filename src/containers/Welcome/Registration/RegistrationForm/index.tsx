@@ -1,10 +1,8 @@
 import { Button, Input } from 'components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { useLazyGetUsersQuery } from 'services/user';
 import { useAppDispatch } from 'hooks/redux';
 import { setProfileState } from 'store/profile/slice';
-import { setUsersState } from 'store/users/slice';
 
 export const RegistrationForm = () => {
   const dispatch = useAppDispatch();
@@ -12,15 +10,8 @@ export const RegistrationForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
-  const [getUsers, { data }] = useLazyGetUsersQuery();
-
-  useEffect(() => {
-    dispatch(setUsersState({ users: data?.items }));
-  }, [data]);
-
   const onRegisterClick = () => {
     if (!name || !email) return;
-    getUsers({ page: 0 });
     dispatch(setProfileState({ id: 0, email, name }));
   };
 
