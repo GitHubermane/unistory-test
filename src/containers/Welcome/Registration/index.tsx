@@ -1,27 +1,19 @@
 import { Button } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { isRegisteredSelector } from 'store/profile/selectors';
-import { addUser } from 'store/users/slice';
-import { useEffect } from 'react';
-
+import { isRegisteredSelector } from 'store/profile/selector';
 import { isExistMyselfSelector } from 'store/users/selector';
-import { useModal } from 'react-modal-hook';
+import { addUser } from 'store/users/slice';
 import { RegistrationForm } from './RegistrationForm';
 import { Table } from './Table';
-import { ModalMetamask } from '../ModalMetamask/incex';
 
 export const Registration = () => {
   const dispatch = useAppDispatch();
-
-  const [showModal, hideModal] = useModal(() => (
-    <ModalMetamask onClose={hideModal} />
-  ));
 
   const { name, email, address } = useAppSelector((state) => state.profile);
   const isRegistered = useAppSelector((state) => isRegisteredSelector(state));
   const isExistMyself = useAppSelector((state) => isExistMyselfSelector(state));
 
-  useEffect(showModal, []);
+  const formStyle = !isRegistered ? 'w-1/3' : '';
 
   const onAddClick = () => {
     if (!!address && !!name && !!email) {
@@ -39,8 +31,8 @@ export const Registration = () => {
   return (
     <>
       {}
-      <div className="flex justify-between">
-        <div className="mr-32">
+      <div className={`flex justify-between ${formStyle}`}>
+        <div className={isRegistered ? 'mr-32' : ''}>
           <h3 className="mb-4 font-bold text-4xl text-orange-light">
             Beta test registration
           </h3>
