@@ -1,40 +1,47 @@
-import { PlanetImg } from 'assets';
+import { Planet } from 'components';
+import { useParams } from 'react-router-dom';
+import { useGetUserbyIdQuery } from 'services/user';
 
-const arr = [
-  {
-    title: 'Name',
-    value: 'Rojer waters',
-  },
-  {
-    title: 'Email',
-    value: 'Charadeyouare@gmail.com',
-  },
-  {
-    title: 'Wallet',
-    value: '0xe02354bdbb79b935407488c4276ff7898802e574',
-  },
-];
+export const User = () => {
+  const { id } = useParams();
 
-export const User = () => (
-  <div className="overflow-hidden">
-    <div className="relative z-10">
-      <h2 className="mt-24 mb-12 text-5xl font-bold">Personal data</h2>
-      <div>
-        {arr.map(({ title, value }) => (
-          <div
-            className="flex flex-col mb-5 font-bold"
-            key={title}
-          >
-            <span className="mb-2 text-2xl ">{title}</span>
-            <span className="text-3xl text-orange-light">{value}</span>
-          </div>
-        ))}
+  const { data } = useGetUserbyIdQuery(Number(id));
+
+  // Секции с информацией о пользователе
+  const sections = [
+    {
+      title: 'Name',
+      value: data?.username,
+    },
+    {
+      title: 'Email',
+      value: data?.email,
+    },
+    {
+      title: 'Wallet',
+      value: data?.address,
+    },
+  ];
+
+  return (
+    <div className="overflow-hidden">
+      <div className="relative z-10">
+        <h2 className="mt-24 mb-12 text-5xl font-bold">Personal data</h2>
+        <div>
+          {sections.map(({ title, value }) => (
+            <div
+              className="flex flex-col mb-5 font-bold"
+              key={title}
+            >
+              <span className="mb-2 text-2xl ">{title}</span>
+              <span className="text-3xl text-orange-light">{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="absolute top-52 -right-24">
+        <Planet />
       </div>
     </div>
-    <img
-      className="absolute top-52 -right-24 z-0"
-      src={PlanetImg}
-      alt="Planet"
-    />
-  </div>
-);
+  );
+};
