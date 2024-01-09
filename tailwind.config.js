@@ -22,9 +22,13 @@ export default {
           dark: "#5A5A5A",
         },
         'black': {
+          light: '#1E1E20',
           DEFAULT: "#262628",
           dark: "#171719"
         },
+        'smoky': {
+          DEFAULT: '#323232',
+        }
       }
     },
   },
