@@ -4,3 +4,4 @@ export { Layout } from './Layout';
 export { Input } from './Input';
 export { Modal } from './Modal';
 export { Loader } from './Loader';
+export { Planet } from './Planet';
