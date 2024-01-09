@@ -23,9 +23,12 @@ export const Table = () => {
 
   // При возвращении с другой страницы записи в таблице начинают повторяться
   // поэтому при переходе на другую страницу очищаю таблицу
-  useEffect(() => () => {
-    dispatch(setUsersState({ users: [] }));
-  }, []);
+  useEffect(
+    () => () => {
+      dispatch(setUsersState({ users: [] }));
+    },
+    [],
+  );
 
   // infinite scroll
   let hasNextPage = true;
@@ -67,12 +70,14 @@ export const Table = () => {
                   {...user}
                 />
               ))}
-              <div
-                className="flex justify-center mt-4"
-                ref={sentryRef}
-              >
-                <Loader />
-              </div>
+              {hasNextPage && (
+                <div
+                  className="flex justify-center mt-4"
+                  ref={sentryRef}
+                >
+                  <Loader />
+                </div>
+              )}
             </div>
           </div>
         </div>
