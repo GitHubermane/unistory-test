@@ -4,16 +4,20 @@ import type { User, UsersState } from 'types';
 
 const initialState: UsersState = {
   users: [],
-  user: null,
 };
 
 export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    setUsersState: (state, action: PayloadAction<Partial<UsersState>>) =>
-      // eslint-disable-next-line no-param-reassign
-      ({ ...state, ...action.payload }),
+    setUsersState: (state, action: PayloadAction<Partial<UsersState>>) => ({
+      ...state,
+      ...action.payload,
+    }),
+
+    addUsers: (state, action: PayloadAction<User[]>) => {
+      state.users.push(...action.payload);
+    },
 
     addUser: (state, action: PayloadAction<User>) => {
       state.users.unshift(action.payload);
@@ -25,6 +29,7 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { addUser, deleteUser, setUsersState } = usersSlice.actions;
+export const { addUser, deleteUser, addUsers, setUsersState } =
+  usersSlice.actions;
 
 export default usersSlice.reducer;
