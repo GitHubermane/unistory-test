@@ -1,8 +1,18 @@
-import { PlanetImg } from 'assets';
 import { fromatNumber } from 'utils';
+import { useModal } from 'react-modal-hook';
+import { Planet } from 'components';
+
+import { ModalMetamask } from './ModalMetamask';
 import { Registration } from './Registration';
+import { useEffect } from 'react';
 
 export const Welcome = () => {
+  const [showModal, hideModal] = useModal(() => (
+    <ModalMetamask onClose={hideModal} />
+  ));
+
+  useEffect(showModal, []);
+
   const stats = [];
 
   for (let i = 0; i < 3; i++) {
@@ -10,32 +20,36 @@ export const Welcome = () => {
   }
 
   return (
-    <div className="mt-36">
-      <div className="flex">
+    <div className="mt-[260px]">
+      <div className="flex mb-28">
         <div>
           <div className="text-9xl font-bold mb-11">
-            <img
-              className="absolute top-40 right-96 z-0"
-              src={PlanetImg}
-              alt="Planet icon"
-            />
-            <h2 className="relative z-10 mix-blend-difference">
+            <div className="absolute -z-10 top-28 right-72">
+              <div className="absolute top-[5px] left-[200px] flex items-center justify-center h-[30px] w-20 text-sm bg-white text-black-dark rounded-full z-10">
+                <span className="pr-2">Q1 2022</span>
+                <div className="flex flex-col items-center justify-center shadowed size-3.5 rounded-full">
+                  <div className="bg-orange-light size-1.5 rounded-full" />
+                </div>
+              </div>
+              <Planet />
+            </div>
+            <h2 className="relative mix-blend-difference">
               Explore Your own planet
             </h2>
-            <h2 className="relative z-10 mix-blend-difference">
+            <h2 className="relative mix-blend-difference">
               {'In '}
               <span className="outline-title">our New</span>
               {' metaverse'}
             </h2>
           </div>
-          <p className="font-AvenirNextCyr w-1/3">
+          <p className="relative w-1/3 font-AvenirNextCyr">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </p>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center relative">
           <span className="mb-10 font-bold text-center text-3xl">
             Roadmap stats
           </span>
@@ -53,7 +67,7 @@ export const Welcome = () => {
           ))}
         </div>
       </div>
-      <div>
+      <div className="pb-40">
         <Registration />
       </div>
     </div>
