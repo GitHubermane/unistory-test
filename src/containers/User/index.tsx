@@ -1,11 +1,11 @@
-import { Planet } from 'components';
+import { Loader, Planet } from 'components';
 import { useParams } from 'react-router-dom';
 import { useGetUserbyIdQuery } from 'services/user';
 
 export const User = () => {
   const { id } = useParams();
 
-  const { data } = useGetUserbyIdQuery(Number(id));
+  const { data, isLoading, isError } = useGetUserbyIdQuery(Number(id));
 
   // Секции с информацией о пользователе
   const sections = [
@@ -24,22 +24,32 @@ export const User = () => {
   ];
 
   return (
-    <div className="overflow-hidden">
+    <div className="absolute w-[calc(100%-4rem)] h-full overflow-hidden">
       <div className="relative z-10">
         <h2 className="mt-24 mb-12 text-5xl font-bold">Personal data</h2>
-        <div>
-          {sections.map(({ title, value }) => (
-            <div
-              className="flex flex-col mb-5 font-bold"
-              key={title}
-            >
-              <span className="mb-2 text-2xl ">{title}</span>
-              <span className="text-3xl text-orange-light">{value}</span>
-            </div>
-          ))}
-        </div>
+        {isError ? (
+          <div className="text-xl font-AvenirNextCyr text-orange-light">
+            Error occured
+          </div>
+        ) : (
+          <div>
+            {!isLoading ? (
+              sections.map(({ title, value }) => (
+                <div
+                  className="flex flex-col mb-5 font-bold"
+                  key={title}
+                >
+                  <span className="mb-2 text-2xl ">{title}</span>
+                  <span className="text-3xl text-orange-light">{value}</span>
+                </div>
+              ))
+            ) : (
+              <Loader />
+            )}
+          </div>
+        )}
       </div>
-      <div className="absolute top-52 -right-24">
+      <div className="absolute top-[35px] -right-[199px]">
         <Planet />
       </div>
     </div>
