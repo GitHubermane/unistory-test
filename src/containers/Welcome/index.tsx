@@ -2,9 +2,9 @@ import { fromatNumber } from 'utils';
 import { useModal } from 'react-modal-hook';
 import { Planet } from 'components';
 
+import { useEffect } from 'react';
 import { ModalMetamask } from './ModalMetamask';
 import { Registration } from './Registration';
-import { useEffect } from 'react';
 
 export const Welcome = () => {
   const [showModal, hideModal] = useModal(() => (
