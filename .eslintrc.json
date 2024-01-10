@@ -63,6 +63,12 @@
         "depth": 1
       }
     ],
+    "no-plusplus": [
+      2,
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
     "consistent-return": 0,
     "no-trailing-spaces": 0,
     "operator-linebreak": 0,

@@ -2,5 +2,9 @@ node_modules
 build
 dist
 vite.config.ts
+
 .eslintcache
 .eslintrc.json
+
+tailwind.config.js
+postcss.config.js

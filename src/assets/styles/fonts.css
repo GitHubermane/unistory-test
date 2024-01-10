@@ -1,0 +1,50 @@
+/* 
+  Bebas Neue 
+*/
+
+@font-face {
+  font-family: "Bebas Neue";
+  src:
+    local("Bebas Neue"),
+    url("../fonts/BebasNeue/BebasNeue-Regular.otf") format("opentype"),
+    url("../fonts/BebasNeue/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src:
+    local("Bebas Neue"),
+    url("../fonts/BebasNeue/BebasNeue-Bold.otf") format("opentype"),
+    url("../fonts/BebasNeue/BebasNeue-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*
+  Avenir Next Cyr 
+*/
+
+@font-face {
+  font-family: "Avenir Next Cyr";
+  src:
+    local("Avenir Next Cyr"),
+    url("../fonts/AvenirNextCyr/AvenirNextCyr-Regular.ttf") format("truetype"),
+    url("../fonts/AvenirNextCyr/AvenirNextCyr-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*
+  Inter
+*/
+
+@font-face {
+  font-family: "Inter";
+  src:
+    local("Inter"),
+    url("../fonts/Inter/Inter-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
