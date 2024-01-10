@@ -60,7 +60,7 @@ export const Table = () => {
             <div className="inline-block w-2/5">Wallet</div>
           </div>
           <div
-            className="font-AvenirNextCyr overflow-y-auto h-[200px] -mr-7 scroll"
+            className="font-AvenirNextCyr overflow-y-auto h-[550px] -mr-7 scroll"
             ref={rootRef}
           >
             <div className="mr-7">
