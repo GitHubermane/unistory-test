@@ -23,11 +23,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ModalProvider>
       <Provider store={store}>
         <DAppProvider config={config}>
-          <BrowserRouter>
+          <BrowserRouter basename="/unistory-test/">
             <App />
           </BrowserRouter>
         </DAppProvider>
       </Provider>
     </ModalProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
