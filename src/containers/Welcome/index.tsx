@@ -20,7 +20,7 @@ export const Welcome = () => {
   }
 
   return (
-    <div className="mt-[260px]">
+    <div className="mt-[180px]">
       <div className="flex mb-28">
         <div>
           <div className="text-9xl font-bold mb-11">

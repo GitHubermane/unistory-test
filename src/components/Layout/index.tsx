@@ -8,6 +8,6 @@ type PropsType = {
 export const Layout: FC<PropsType> = ({ children }) => (
   <>
     <Header />
-    <div className="mt-20 px-16">{children}</div>
+    <div className="pt-20 px-16">{children}</div>
   </>
 );
