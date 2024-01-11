@@ -7,6 +7,8 @@ type PropsType = {
   onChange: (value: string) => void;
   label: string;
   isDisabled?: boolean;
+  error?: string;
+  setError?: (value: string) => void;
 };
 
 export const Input: FC<PropsType> = ({
@@ -15,11 +17,14 @@ export const Input: FC<PropsType> = ({
   onChange,
   label,
   isDisabled,
+  error,
+  setError,
 }) => {
   const id = useId();
 
   const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.currentTarget.value);
+    if (setError) setError('');
   };
 
   const inputStyle = isDisabled ? 'border-gray-dark' : '';
@@ -40,6 +45,9 @@ export const Input: FC<PropsType> = ({
         id={id}
         disabled={isDisabled}
       />
+      {error && (
+        <div className="font-AvenirNextCyr mt-3 text-orange-light">{error}</div>
+      )}
     </div>
   );
 };
