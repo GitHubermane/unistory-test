@@ -20,7 +20,7 @@ export const Planet = () => (
       <div className="absolute top-[17px] right-1/2 -translate-x-1/2 orange-point" />
 
       <div className="rotation ">
-        <div className="ornage-line" />
+        <div className="orange-line" />
       </div>
     </div>
   </div>
